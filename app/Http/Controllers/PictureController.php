@@ -38,7 +38,18 @@ class PictureController extends Controller
      */
     public function store(Request $request)
     {
-        // See PictureControllerTest to see what this should do
+        // Save the file locally
+        $request->file->store('public');
+
+        // Store the record
+        $picture = new Picture([
+            "name" => $request->get('name'),
+            "file_path" => $request->file->hashName()
+        ]);
+        $picture->save(); // Save the record.
+
+        //return $this->index();
+        return redirect('/');
     }
 
     /**
