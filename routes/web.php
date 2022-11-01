@@ -22,4 +22,4 @@ Route::resources([
     'pictures' => PictureController::class,
 ]);
 
-Route::post('/pictures/{picture}/upvote', [PictureController::class, 'upvote'])->name('pictures.upvote');
+Route::get('/pictures/{picture}/upvote', [PictureController::class, 'upvote'])->name('pictures.upvote');

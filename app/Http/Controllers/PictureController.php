@@ -59,9 +59,8 @@ class PictureController extends Controller
      */
     public function upvote(Request $request, Picture $picture)
     {
-        $upvote = Picture::find($picture);
-        $upvote->votes = $upvote->votes + 1;
-        $upvote->save();
+        $picture->votes = $picture->votes + 1;
+        $picture->save();
 
         // Picture::find(1)->increment('votes');
 
