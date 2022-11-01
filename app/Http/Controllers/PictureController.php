@@ -48,8 +48,7 @@ class PictureController extends Controller
         ]);
         $picture->save(); // Save the record.
 
-        //return $this->index();
-        return redirect('/');
+        return $this->index();
     }
 
     /**
@@ -60,6 +59,20 @@ class PictureController extends Controller
      */
     public function upvote(Request $request, Picture $picture)
     {
-        
+        $upvote = Picture::find($picture);
+        $upvote->votes = $upvote->votes + 1;
+        $upvote->save();
+
+        // Picture::find(1)->increment('votes');
+
+        return $this->index();
     }
+
+    // public function delete($id)
+    // {
+    //     $picture = Picture::find($id);
+    //     $picture->delete();
+
+    //     return $this->index();
+    // }
 }
