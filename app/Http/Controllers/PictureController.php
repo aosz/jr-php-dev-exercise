@@ -62,8 +62,6 @@ class PictureController extends Controller
         $picture->votes = $picture->votes + 1;
         $picture->save();
 
-        // Picture::find(1)->increment('votes');
-
         return $this->index();
     }
 
